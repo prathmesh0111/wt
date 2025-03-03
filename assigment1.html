@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Bio Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #ffebee;
+            color: white;
+        }
+        .container {
+            background: #deb08b;
+            padding: 20px;
+            display: inline-block;
+            width: 500px;
+            border-radius: 10px;
+            color: black;
+            margin-top: 10%;
+            filter: drop-shadow(10px 10px 10px black);
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-top: 10px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #b30000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Bio</h2>
+        <p id="bio"></p>
+        <img id="profile-pic" src="" alt="Profile Picture">
+        <br>
+        <button onclick="updateBio()">Update Bio</button>
+    </div>
+
+    <script>
+        function getBio() {
+            let name = prompt("Enter your name:").trim();
+            while (!name) {
+                alert("Name cannot be empty!");
+                name = prompt("Enter your name:").trim();
+            }
+
+            let rollNo = prompt("Enter your Roll Number:").trim();
+            while (!rollNo) {
+                alert("Roll Number cannot be empty!");
+                rollNo = prompt("Enter your Roll Number:").trim();
+            }
+            
+            let Division = prompt("Enter your Div:").trim();
+            while (!Division) {
+                alert("College name cannot be empty!");
+                Division = prompt("Enter your Div:").trim();
+            }
+            
+            let profession = prompt("Enter your field of study:").trim();
+            while (!profession) {
+                alert("Field of study cannot be empty!");
+                profession = prompt("Enter your field of study:").trim();
+            }
+            
+            let photoURL = prompt("Enter the URL of your profile picture:").trim();
+            while (!photoURL) {
+                alert("Profile picture URL cannot be empty!");
+                photoURL = prompt("Enter the URL of your profile picture:").trim();
+            }
+            
+            let bioInfo = `Name: ${name} <br> Roll No: ${rollNo} <br> Division: ${Division} <br> Field of Study: ${profession}`;
+            
+            alert(`Bio Information:\nName: ${name}\nRoll No: ${rollNo}\nCollege: ${Division}\nField of Study: ${profession}`);
+            console.log("Student Bio:", { name, rollNo, Division, profession, photoURL });
+            
+            document.getElementById("bio").innerHTML = bioInfo;
+            document.getElementById("profile-pic").src = photoURL;
+        }
+        
+        function updateBio() {
+            getBio();
+        }
+        
+        window.onload = getBio;
+    </script>
+</body>
+</html>
